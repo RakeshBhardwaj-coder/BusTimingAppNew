@@ -46,14 +46,16 @@ import rakesh.app.bustimingapp.Auth.SignInPage;
 import rakesh.app.bustimingapp.FindYourBus.FindYourBus;
 import rakesh.app.bustimingapp.Models.BusModel;
 import rakesh.app.bustimingapp.Home.MainActivity;
+import rakesh.app.bustimingapp.Models.BusModelForSD;
 import rakesh.app.bustimingapp.R;
 
-public class BusRegistrationPage extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class BusRegistrationPage extends AppCompatActivity  {
 
     Spinner busType,source,destination;
     String busTypeString, busSourceString, busDestinationString;
     List<String> busTypeList;
-
+    List<String> busSourceList;
+    List<String> busDestinationList;
     TimePickerDialog picker;
     TextView tvSourceTime,tvDestinationTime;
 
@@ -68,8 +70,7 @@ public class BusRegistrationPage extends AppCompatActivity implements AdapterVie
     TextView sourceTime,destinationTime;
     FirebaseFirestore firestore;
 
-     List<String> busSourceList;
-    List<String> busDestinationList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,28 +78,103 @@ public class BusRegistrationPage extends AppCompatActivity implements AdapterVie
 
         //Getting busType, selecting from the spinner.
         busType = findViewById(R.id.sBusType);
-
+        source = findViewById(R.id.etSource);
+        destination = findViewById(R.id.etDestination);
         // Spinner Drop down elements
         busTypeList= new ArrayList<String>();
         busTypeList.add("Select Bus Type");
         busTypeList.add("City Bus");
         busTypeList.add("Private Bus");
 
+
+
         busSourceList = new ArrayList<String>();
 
         busSourceList.add("Select Bus Source");
-        busSourceList.add("City Bus");
-        busSourceList.add("Private Bus");
+        busSourceList.add("Ramanujganj");
+        busSourceList.add("Balrampur");
+        busSourceList.add("Ambikapur");
+        busSourceList.add("Surjpur");
+        busSourceList.add("Jashpur");
+        busSourceList.add("Baikunthpur");
+        busSourceList.add("Raigarh");
+        busSourceList.add("Kathghora");
+        busSourceList.add("Korba");
+        busSourceList.add("Pali");
+        busSourceList.add("Ratanpur");
+        busSourceList.add("Bilaspur");
+        busSourceList.add("Champa");
+        busSourceList.add("Janjgir");
+        busSourceList.add("Raipur");
+        busSourceList.add("Bhilai");
+        busSourceList.add("Durg");
+        busSourceList.add("Rajnandgaon");
+        busSourceList.add("Balod");
+        busSourceList.add("Dalli Rajhra");
+        busSourceList.add("Bhanupratappur");
+        busSourceList.add("Narayanpur");
+        busSourceList.add("Gidam");
+        busSourceList.add("Dantewada");
+        busSourceList.add("Jagdalpur");
+        busSourceList.add("Bijapur");
+        busSourceList.add("Dhamtari");
+        busSourceList.add("Mahasamund");
+        busSourceList.add("Kanker");
+        busSourceList.add("Keshkal");
+        busSourceList.add("Sukma");
+
 
 
 
         busDestinationList = new ArrayList<String>();
 
         busDestinationList.add("Select Bus Destination");
-        busDestinationList.add("City Bus");
-        busDestinationList.add("Private Bus");
+        busDestinationList.add("Ramanujganj");
+        busDestinationList.add("Balrampur");
+        busDestinationList.add("Ambikapur");
+        busDestinationList.add("Surjpur");
+        busDestinationList.add("Jashpur");
+        busDestinationList.add("Baikunthpur");
+        busDestinationList.add("Raigarh");
+        busDestinationList.add("Kathghora");
+        busDestinationList.add("Korba");
+        busDestinationList.add("Pali");
+        busDestinationList.add("Ratanpur");
+        busDestinationList.add("Bilaspur");
+        busDestinationList.add("Champa");
+        busDestinationList.add("Janjgir");
+        busDestinationList.add("Raipur");
+        busDestinationList.add("Bhilai");
+        busDestinationList.add("Durg");
+        busDestinationList.add("Rajnandgaon");
+        busDestinationList.add("Balod");
+        busDestinationList.add("Dalli Rajhra");
+        busDestinationList.add("Bhanupratappur");
+        busDestinationList.add("Narayanpur");
+        busDestinationList.add("Gidam");
+        busDestinationList.add("Dantewada");
+        busDestinationList.add("Jagdalpur");
+        busDestinationList.add("Bijapur");
+        busDestinationList.add("Dhamtari");
+        busDestinationList.add("Mahasamund");
+        busDestinationList.add("Kanker");
+        busDestinationList.add("Keshkal");
+        busDestinationList.add("Sukma");
 
 
+        destination.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(busDestinationList.get(i)!=busDestinationList.get(0)){
+                    busDestinationString = busDestinationList.get(i);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
         // Creating adapter for spinner
@@ -109,13 +185,59 @@ public class BusRegistrationPage extends AppCompatActivity implements AdapterVie
 
         // attaching data adapter to spinner
         busType.setAdapter(busTypeAdapter);
-        busType.setOnItemSelectedListener(this);
+        busType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(busTypeList.get(i)!=busTypeList.get(0)){
+                    busTypeString = busTypeList.get(i);
+                }
+            }
 
-        ArrayAdapter<String> busSourceAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,busSourceList);
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> busSourceAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, busSourceList);
+        // Creating adapter for spinner
+        ArrayAdapter<String> busDestinationAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, busDestinationList);
+
+        // Drop down layout style - list view with radio button
         busSourceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Drop down layout style - list view with radio button
+        busDestinationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        // attaching data adapter to spinner
         source.setAdapter(busSourceAdapter);
-        source.setOnItemSelectedListener(this);
+        // attaching data adapter to spinner
+        destination.setAdapter(busDestinationAdapter);
+        source.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                busSourceString = (String) adapterView.getItemAtPosition(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        destination.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                busDestinationString = (String) adapterView.getItemAtPosition(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
         tvSourceTime = findViewById(R.id.tvSourceTime);
         tvDestinationTime = findViewById(R.id.tvDestinationTime);
 
@@ -129,7 +251,8 @@ public class BusRegistrationPage extends AppCompatActivity implements AdapterVie
             @Override
             public void onClick(View view) {
 
-                SubmitRegistration();
+                if(busSourceString!=null)
+                      SubmitRegistration();
 
             }
         });
@@ -215,36 +338,36 @@ public class BusRegistrationPage extends AppCompatActivity implements AdapterVie
         //busType already set.
         busNumber = findViewById(R.id.etBusNum);
         busName = findViewById(R.id.etBusName);
-        source = findViewById(R.id.etSource);
-        destination = findViewById(R.id.etDestination);
+
         sourceTime = findViewById(R.id.tvSourceTime);
         destinationTime = findViewById(R.id.tvDestinationTime);
 
         firestore = FirebaseFirestore.getInstance();
 
 
+        source.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(busSourceList.get(i)!=busSourceList.get(0)){
+                    busSourceString = busSourceList.get(i);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        if(busTypeList.get(i) != busTypeList.get(0)){
-            busTypeString = busTypeList.get(i);
-            Toast.makeText(getApplicationContext(), ""+ busTypeString,Toast.LENGTH_SHORT).show();
-        }
 
-        if(busSourceList.get(i)!=busSourceList.get(0)){
-            busSourceString = busSourceList.get(i);
-        }
-        if(busDestinationList.get(i)!=busDestinationList.get(0)){
-            busDestinationString = busDestinationList.get(i);
-        }
-    }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+  // All the Value of items
 
-    }
+
+
 
     public void AddTimeSource(View view){
         final Calendar cldr = Calendar.getInstance();
@@ -337,13 +460,30 @@ public class BusRegistrationPage extends AppCompatActivity implements AdapterVie
                             //Using the model to set the data to firestore
                             FindYourBus.addBusNumber(busNumberStr);
                             BusModel busModel = new BusModel(busNumberStr,busTypeStr,busNameStr,sourceStr,destinationStr,sourceTimeStr,destinationTimeStr);
+                            BusModelForSD busModelForSource = new BusModelForSD(destinationStr,busNumberStr,sourceStr);
+
 
                             DocumentReference documentReference = firestore.collection("Buses").document(currentUserId).collection("Bus Number").document(busNumberStr);
-
+                            DocumentReference documentSourceRef = firestore.collection("AllBusStops").document(sourceStr);
+                            DocumentReference documentDestinationRef = firestore.collection("AllBusDestination").document(destinationStr);
 //                            // This map method if you don't use any model.
 //                            Map<String,Object> user = new HashMap<>();
 //                            user.put("Bus Type",busTypeStr);
 //
+
+                            documentSourceRef.set(busModelForSource).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d(TAG,"Error : " + e.toString());
+
+                                }
+                            });
+
                             documentReference.set(busModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
@@ -357,6 +497,7 @@ public class BusRegistrationPage extends AppCompatActivity implements AdapterVie
 
                                 }
                             });
+
 
                             finish();
                         }
