@@ -54,6 +54,7 @@ import java.util.Map;
 
 import rakesh.app.bustimingapp.Adapters.StopsDetailsDataAdapter;
 import rakesh.app.bustimingapp.Models.BusModel;
+import rakesh.app.bustimingapp.Models.BusModelForSD;
 import rakesh.app.bustimingapp.Models.BusStopsModel;
 import rakesh.app.bustimingapp.R;
 
@@ -312,6 +313,8 @@ public class AddStopsPage extends AppCompatActivity {
                                        // Get stops count and increment at same time
                                        GetStopCounts();
                                        AutoIndexing();
+
+                                       AddBusStopDetail(busNextStopNameStr,busNumberKey,busStopNameStr, busStopIndex);
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
@@ -329,6 +332,24 @@ public class AddStopsPage extends AppCompatActivity {
                 });
 
         addStopsBtnBuilder.create().show();
+    }
+
+    private void AddBusStopDetail(String busDestinationStr,String busNumberStr,String busStopStr,int busStopIndex) {
+        DocumentReference documentSourceRef = FirebaseFirestore.getInstance().collection(busStopStr).document(busNumberStr+""+busStopIndex);
+        BusModelForSD busModelForSource = new BusModelForSD(busDestinationStr,busNumberStr,busStopStr, busStopIndex);
+        documentSourceRef.set(busModelForSource).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG,"Error : " + e.toString());
+
+            }
+        });
+
     }
 
     public void AutoIndexing(){

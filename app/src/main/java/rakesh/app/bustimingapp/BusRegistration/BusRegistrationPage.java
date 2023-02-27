@@ -418,29 +418,30 @@ public class BusRegistrationPage extends AppCompatActivity  {
                             //Using the model to set the data to firestore
                             FindYourBus.addBusNumber(busNumberStr);
                             BusModel busModel = new BusModel(busNumberStr,busTypeStr,busNameStr,sourceStr,destinationStr,sourceTimeStr,destinationTimeStr);
-                            BusModelForSD busModelForSource = new BusModelForSD(destinationStr,busNumberStr,sourceStr);
+                            BusModelForSD busModelForSource = new BusModelForSD(destinationStr,busNumberStr,sourceStr,0);
 
 
                             DocumentReference documentReference = firestore.collection("Buses").document(currentUserId).collection("Bus Number").document(busNumberStr);
-                            DocumentReference documentSourceRef = firestore.collection("AllBusStops").document(sourceStr);
+//                            DocumentReference documentSourceRef = firestore.collection("AllBusStops").document(sourceStr).collection(busNumberStr).document(""+0);
                             DocumentReference documentDestinationRef = firestore.collection("AllBusDestination").document(destinationStr);
 //                            // This map method if you don't use any model.
 //                            Map<String,Object> user = new HashMap<>();
 //                            user.put("Bus Type",busTypeStr);
 //
 
-                            documentSourceRef.set(busModelForSource).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.d(TAG,"Error : " + e.toString());
-
-                                }
-                            });
+                            // not need for just because of if you enter the stops details.
+//                            documentSourceRef.set(busModelForSource).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                @Override
+//                                public void onSuccess(Void unused) {
+//
+//                                }
+//                            }).addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception e) {
+//                                    Log.d(TAG,"Error : " + e.toString());
+//
+//                                }
+//                            });
 
                             documentReference.set(busModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

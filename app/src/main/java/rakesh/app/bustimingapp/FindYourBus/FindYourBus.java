@@ -180,7 +180,8 @@ busNumberList.add("5555");
 //            String busNumber = busNumberList.get(i);
 //            query = firestore.collectionGroup(busNumber).whereEqualTo("busStopName",findStoppageStr);
 
-            query = firestore.collectionGroup(busNumberList.get(i)).whereEqualTo("busStopName","Bilaspur").whereEqualTo("busFinalDestination","Raipur");
+//            query = firestore.collectionGroup(busNumberList.get(i)).whereEqualTo("busStopName","Bilaspur").whereEqualTo("busFinalDestination","Raipur");
+            query = firestore.collection("Surjpur").whereEqualTo("busDestination","Baikunthpur");
 // Execute the query
             query.get()
                     .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
