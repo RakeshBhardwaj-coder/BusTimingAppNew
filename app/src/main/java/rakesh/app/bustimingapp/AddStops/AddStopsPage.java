@@ -72,8 +72,8 @@ public class AddStopsPage extends AppCompatActivity {
     // for stop details builder
     TextView busStopIndexShow; //show the index before add stops
     TextView busExitTime,busReachTime;
-    EditText busStopName,busWaitingTime;
-    String busName,busType,busStopNameStr,busReachTimeStr,busExitTimeStr,busWaitingTimeStr,busFinalDestination;
+    EditText busStopName,busNextStopName,busWaitingTime;
+    String busName,busType,busStopNameStr,busNextStopNameStr,busReachTimeStr,busExitTimeStr,busWaitingTimeStr,busFinalDestination;
     RecyclerView rvBusStopsData;
 
     ArrayList<BusStopsModel> busStopsModelsData;  // Bus Stop Model because we get the all data with the form of Bus Model and we get as Array List.
@@ -184,6 +184,7 @@ public class AddStopsPage extends AppCompatActivity {
         busStopIndexShow = customLayout.findViewById(R.id.asdsdStopIndex);
         busStopIndexShow.setText(""+busStopIndex);
         busStopName = customLayout.findViewById(R.id.asdsdBusStopName);
+        busNextStopName = customLayout.findViewById(R.id.asdsdBusNextStopName);
         busReachTime = customLayout.findViewById(R.id.asdsdBusReachTime);
         busWaitingTime = customLayout.findViewById(R.id.asdsdBusWaitingTime);
         busExitTime = customLayout.findViewById(R.id.asdsdBusExitTime);
@@ -210,11 +211,12 @@ public class AddStopsPage extends AppCompatActivity {
                             public void onClick(DialogInterface dialog,int which)
                             {
                                 busStopNameStr = busStopName.getText().toString();
+                                busNextStopNameStr = busNextStopName.getText().toString();
                                 busReachTimeStr = busReachTime.getText().toString();
                                 busWaitingTimeStr = busWaitingTime.getText().toString();
                                 busExitTimeStr = busExitTime.getText().toString();
                                 // send data to Firebase
-                                BusStopsModel busStopsModel = new BusStopsModel(""+busStopIndex,busName,busType,busStopNameStr,busReachTimeStr,busExitTimeStr,busWaitingTimeStr,busFinalDestination);
+                                BusStopsModel busStopsModel = new BusStopsModel(""+busStopIndex,busName,busType,busStopNameStr,busNextStopNameStr,busReachTimeStr,busExitTimeStr,busWaitingTimeStr,busFinalDestination);
                                 DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Stops").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection(busNumberKey).document(""+busStopIndex);
                                 documentReference.set(busStopsModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override

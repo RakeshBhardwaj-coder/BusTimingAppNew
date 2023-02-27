@@ -2,37 +2,18 @@ package rakesh.app.bustimingapp.Models;
 
 public class BusStopsModel {
     String stopsIndex;
-    String busName,busType,busStopName,busReachTime,busExitTime,busWaitingTime,busFinalDestination;
+    String busName,busType,busStopName,busNextStopName,busReachTime,busExitTime,busWaitingTime,busFinalDestination;
 
     public BusStopsModel(){
 
     }
 
-    public BusStopsModel(String stopsIndex, String busName, String busType, String busStopName, String busReachTime, String busExitTime, String busWaitingTime, String busFinalDestination) {
+    public String getStopsIndex() {
+        return stopsIndex;
+    }
+
+    public void setStopsIndex(String stopsIndex) {
         this.stopsIndex = stopsIndex;
-        this.busName = busName;
-        this.busType = busType;
-        this.busStopName = busStopName;
-        this.busReachTime = busReachTime;
-        this.busExitTime = busExitTime;
-        this.busWaitingTime = busWaitingTime;
-        this.busFinalDestination = busFinalDestination;
-    }
-
-    public String getBusFinalDestination() {
-        return busFinalDestination;
-    }
-
-    public void setBusFinalDestination(String busFinalDestination) {
-        this.busFinalDestination = busFinalDestination;
-    }
-
-    public String getBusType() {
-        return busType;
-    }
-
-    public void setBusType(String busType) {
-        this.busType = busType;
     }
 
     public String getBusName() {
@@ -43,12 +24,28 @@ public class BusStopsModel {
         this.busName = busName;
     }
 
+    public String getBusType() {
+        return busType;
+    }
+
+    public void setBusType(String busType) {
+        this.busType = busType;
+    }
+
     public String getBusStopName() {
         return busStopName;
     }
 
     public void setBusStopName(String busStopName) {
         this.busStopName = busStopName;
+    }
+
+    public String getBusNextStopName() {
+        return busNextStopName;
+    }
+
+    public void setBusNextStopName(String busNextStopName) {
+        this.busNextStopName = busNextStopName;
     }
 
     public String getBusReachTime() {
@@ -75,13 +72,23 @@ public class BusStopsModel {
         this.busWaitingTime = busWaitingTime;
     }
 
-    public String getStopsIndex() {
-        return stopsIndex;
+    public String getBusFinalDestination() {
+        return busFinalDestination;
     }
 
-    public void setStopsIndex(String stopsIndex) {
+    public void setBusFinalDestination(String busFinalDestination) {
+        this.busFinalDestination = busFinalDestination;
+    }
+
+    public BusStopsModel(String stopsIndex, String busName, String busType, String busStopName, String busNextStopName, String busReachTime, String busExitTime, String busWaitingTime, String busFinalDestination) {
         this.stopsIndex = stopsIndex;
+        this.busName = busName;
+        this.busType = busType;
+        this.busStopName = busStopName;
+        this.busNextStopName = busNextStopName;
+        this.busReachTime = busReachTime;
+        this.busExitTime = busExitTime;
+        this.busWaitingTime = busWaitingTime;
+        this.busFinalDestination = busFinalDestination;
     }
-
-
 }
