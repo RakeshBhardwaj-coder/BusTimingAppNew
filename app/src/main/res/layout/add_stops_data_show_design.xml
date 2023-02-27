@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+<!--    asdsd means add stops data show design -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Bus Stop"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_gravity="center"
+        android:textSize="@dimen/_18ssp"
+        android:textColor="@color/black"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_arrow"
+        android:backgroundTint="@color/primary_color"
+        android:gravity="center"
+    >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15ssp"
+            />
+        <TextView
+            android:id="@+id/asdsdStopIndex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5ssp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15ssp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/asdsdBusStopName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@color/white"
+        android:hint="Bus Stop Name"
+        android:textAlignment="textStart"
+        android:padding="10dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+        <TextView
+            android:id="@+id/asdsdBusReachTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@color/white"
+            android:hint="Bus Reach Time"
+            android:textSize="@dimen/_15ssp"
+            android:textAlignment="textStart"
+            android:padding="10dp"
+            android:layout_weight="2"
+            />
+        <ImageView
+            android:id="@+id/asdsdSetBusReachTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_clock"
+            android:layout_margin="4dp"
+            android:padding="4dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+
+        >
+        <TextView
+            android:id="@+id/asdsdBusExitTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@color/white"
+            android:hint="Bus Exit Time"
+            android:textSize="@dimen/_15ssp"
+            android:textAlignment="textStart"
+            android:padding="10dp"
+            android:layout_weight="2"
+            />
+        <ImageView
+            android:id="@+id/asdsdSetBusExitTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_clock"
+            android:layout_margin="4dp"
+            android:padding="4dp"
+
+            />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/asdsdBusWaitingTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@color/white"
+        android:hint="Bus Waiting Time (Minute)"
+        android:textAlignment="textStart"
+        android:padding="10dp"
+        />
+</LinearLayout>

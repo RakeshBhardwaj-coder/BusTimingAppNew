@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_5sdp"
+    android:background="@drawable/rectagular_shape"
+    android:layout_margin="@dimen/_10sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_2sdp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            >
+            <TextView
+                android:id="@+id/tvBfdaBusName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:text="Bus Name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp"
+                />
+            <TextView
+                android:layout_marginLeft="@dimen/_18ssp"
+                android:id="@+id/tvBfdaBusType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectagular_shape"
+                android:backgroundTint="@color/white"
+                android:padding="@dimen/_2sdp"
+                android:text="Bus Type"
+                android:textAlignment="center"
+                android:textColor="@color/primary_color"
+                android:textSize="@dimen/_15ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            >
+
+            <TextView
+                android:id="@+id/tvBfdaSource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Your Source"
+                android:textSize="@dimen/_18ssp"
+                android:textColor="@color/white"
+
+                />
+
+            <ImageView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_right_arrow"
+                android:layout_weight="1"
+                app:tint="@color/white"
+                android:layout_gravity="center_vertical"
+                />
+
+            <TextView
+                android:id="@+id/tvBfdaDestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Your Destination"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18ssp"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_100sdp"
+            >
+
+            <TextView
+                android:id="@+id/tvBfdaBusReachTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11 : 55 AM"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5ssp"
+                android:layout_marginRight="@dimen/_5ssp"
+                android:text="To"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp"
+
+                />
+
+            <TextView
+                android:id="@+id/tvBfdaBusExitTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12 : 05 PM"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/tvBfdaBusWaitingTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/_5ssp"
+                android:text="10"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mins of waiting"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
+
+                />
+
+        </LinearLayout>
+
+<!--        <Button-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="More Info"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:backgroundTint="@color/white"-->
+
+<!--            />-->
+
+    </LinearLayout>
+
+
+</RelativeLayout>
