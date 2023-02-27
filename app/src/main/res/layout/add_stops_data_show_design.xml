@@ -40,26 +40,22 @@
             android:textSize="@dimen/_15ssp" />
     </LinearLayout>
 
-    <EditText
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:padding="10dp"
         android:id="@+id/asdsdBusStopName"
+        />
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:background="@color/white"
-        android:hint="Bus Stop Name"
-        android:textAlignment="textStart"
         android:padding="10dp"
-        />
-    <EditText
         android:id="@+id/asdsdBusNextStopName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:background="@color/white"
-        android:hint="Next Stop Name"
-        android:textAlignment="textStart"
-        android:padding="10dp"
         />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

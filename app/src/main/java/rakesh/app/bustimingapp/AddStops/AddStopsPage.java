@@ -19,9 +19,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -72,7 +75,10 @@ public class AddStopsPage extends AppCompatActivity {
     // for stop details builder
     TextView busStopIndexShow; //show the index before add stops
     TextView busExitTime,busReachTime;
-    EditText busStopName,busNextStopName,busWaitingTime;
+    Spinner busStopName,busNextStopName;
+    List<String> busAllStopList;
+    List<String> busNextStopList;
+    TextView busWaitingTime;
     String busName,busType,busStopNameStr,busNextStopNameStr,busReachTimeStr,busExitTimeStr,busWaitingTimeStr,busFinalDestination;
     RecyclerView rvBusStopsData;
 
@@ -140,6 +146,45 @@ public class AddStopsPage extends AppCompatActivity {
             }
         });
 
+        busAllStopList = new ArrayList<String>();
+        busAllStopList.add("Bus Stop");
+        busAllStopList.add("Ramanujganj");
+        busAllStopList.add("Balrampur");
+        busAllStopList.add("Ambikapur");
+        busAllStopList.add("Surjpur");
+        busAllStopList.add("Jashpur");
+        busAllStopList.add("Baikunthpur");
+        busAllStopList.add("Raigarh");
+        busAllStopList.add("Kathghora");
+        busAllStopList.add("Korba");
+        busAllStopList.add("Pali");
+        busAllStopList.add("Ratanpur");
+        busAllStopList.add("Bilaspur");
+        busAllStopList.add("Champa");
+        busAllStopList.add("Janjgir");
+        busAllStopList.add("Raipur");
+        busAllStopList.add("Bhilai");
+        busAllStopList.add("Durg");
+        busAllStopList.add("Rajnandgaon");
+        busAllStopList.add("Balod");
+        busAllStopList.add("Dalli Rajhra");
+        busAllStopList.add("Bhanupratappur");
+        busAllStopList.add("Narayanpur");
+        busAllStopList.add("Gidam");
+        busAllStopList.add("Dantewada");
+        busAllStopList.add("Jagdalpur");
+        busAllStopList.add("Bijapur");
+        busAllStopList.add("Dhamtari");
+        busAllStopList.add("Mahasamund");
+        busAllStopList.add("Kanker");
+        busAllStopList.add("Keshkal");
+        busAllStopList.add("Sukma");
+
+        busNextStopList = new ArrayList<>();
+        busNextStopList.add("Bus Next Stop");
+        busNextStopList.addAll(busAllStopList);
+
+
     }
 
     // Get the data using busNum key
@@ -173,6 +218,7 @@ public class AddStopsPage extends AppCompatActivity {
     public void AddStopsBtn(){
 
 
+
         addStopsBtnBuilder = new AlertDialog.Builder(this);
         addStopsBtnBuilder
                 .setCancelable(false);
@@ -190,6 +236,49 @@ public class AddStopsPage extends AppCompatActivity {
         busExitTime = customLayout.findViewById(R.id.asdsdBusExitTime);
         ImageView setBusReachTimeBtn = customLayout.findViewById(R.id.asdsdSetBusReachTime);
         ImageView setBusExitTimeBtn = customLayout.findViewById(R.id.asdsdSetBusExitTime);
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> busAllStopAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, busAllStopList);
+
+        // Drop down layout style - list view with radio button
+        busAllStopAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        busStopName.setAdapter(busAllStopAdapter);
+        busStopName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(busAllStopList.get(i)!=busAllStopList.get(0)){
+                    busStopNameStr = busAllStopList.get(i);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        ArrayAdapter<String> busNextStopAdapter= new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, busNextStopList);
+
+        // Drop down layout style - list view with radio button
+        busNextStopAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        busNextStopName.setAdapter(busNextStopAdapter);
+        busNextStopName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(busNextStopList.get(i)!=busNextStopList.get(0)){
+                    busNextStopNameStr = busNextStopList.get(i);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         setBusReachTimeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,8 +299,7 @@ public class AddStopsPage extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog,int which)
                             {
-                                busStopNameStr = busStopName.getText().toString();
-                                busNextStopNameStr = busNextStopName.getText().toString();
+//                                busNextStopNameStr = busNextStopName.getText().toString();
                                 busReachTimeStr = busReachTime.getText().toString();
                                 busWaitingTimeStr = busWaitingTime.getText().toString();
                                 busExitTimeStr = busExitTime.getText().toString();

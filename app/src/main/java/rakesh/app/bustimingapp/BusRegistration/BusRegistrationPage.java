@@ -129,52 +129,10 @@ public class BusRegistrationPage extends AppCompatActivity  {
         busDestinationList = new ArrayList<String>();
 
         busDestinationList.add("Select Bus Destination");
-        busDestinationList.add("Ramanujganj");
-        busDestinationList.add("Balrampur");
-        busDestinationList.add("Ambikapur");
-        busDestinationList.add("Surjpur");
-        busDestinationList.add("Jashpur");
-        busDestinationList.add("Baikunthpur");
-        busDestinationList.add("Raigarh");
-        busDestinationList.add("Kathghora");
-        busDestinationList.add("Korba");
-        busDestinationList.add("Pali");
-        busDestinationList.add("Ratanpur");
-        busDestinationList.add("Bilaspur");
-        busDestinationList.add("Champa");
-        busDestinationList.add("Janjgir");
-        busDestinationList.add("Raipur");
-        busDestinationList.add("Bhilai");
-        busDestinationList.add("Durg");
-        busDestinationList.add("Rajnandgaon");
-        busDestinationList.add("Balod");
-        busDestinationList.add("Dalli Rajhra");
-        busDestinationList.add("Bhanupratappur");
-        busDestinationList.add("Narayanpur");
-        busDestinationList.add("Gidam");
-        busDestinationList.add("Dantewada");
-        busDestinationList.add("Jagdalpur");
-        busDestinationList.add("Bijapur");
-        busDestinationList.add("Dhamtari");
-        busDestinationList.add("Mahasamund");
-        busDestinationList.add("Kanker");
-        busDestinationList.add("Keshkal");
-        busDestinationList.add("Sukma");
+        busDestinationList.addAll(busSourceList);
 
 
-        destination.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(busDestinationList.get(i)!=busDestinationList.get(0)){
-                    busDestinationString = busDestinationList.get(i);
-                }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
 
         // Creating adapter for spinner
