@@ -44,6 +44,7 @@ import java.util.List;
 
 import rakesh.app.bustimingapp.Auth.SignInPage;
 import rakesh.app.bustimingapp.FindYourBus.FindYourBus;
+import rakesh.app.bustimingapp.Models.BusFindModel;
 import rakesh.app.bustimingapp.Models.BusModel;
 import rakesh.app.bustimingapp.Home.MainActivity;
 import rakesh.app.bustimingapp.Models.BusModelForSD;
@@ -424,10 +425,24 @@ public class BusRegistrationPage extends AppCompatActivity  {
                             DocumentReference documentReference = firestore.collection("Buses").document(currentUserId).collection("Bus Number").document(busNumberStr);
 //                            DocumentReference documentSourceRef = firestore.collection("AllBusStops").document(sourceStr).collection(busNumberStr).document(""+0);
                             DocumentReference documentDestinationRef = firestore.collection("AllBusDestination").document(destinationStr);
+
+                            DocumentReference documentRefBusNumber =firestore.collection("BusNumberDetails").document(busNumberStr);
 //                            // This map method if you don't use any model.
 //                            Map<String,Object> user = new HashMap<>();
 //                            user.put("Bus Type",busTypeStr);
 //
+                            documentRefBusNumber.set(busModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                                                        Log.d(TAG,"Error : " + e.toString());
+
+                                }
+                            });
 
                             // not need for just because of if you enter the stops details.
 //                            documentSourceRef.set(busModelForSource).addOnSuccessListener(new OnSuccessListener<Void>() {

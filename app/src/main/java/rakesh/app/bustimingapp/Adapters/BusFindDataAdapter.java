@@ -12,18 +12,19 @@ import java.util.ArrayList;
 
 import rakesh.app.bustimingapp.FindYourBus.FindYourBus;
 import rakesh.app.bustimingapp.Models.BusFindModel;
+import rakesh.app.bustimingapp.Models.BusModel;
 import rakesh.app.bustimingapp.R;
 
 public class BusFindDataAdapter extends RecyclerView.Adapter<BusFindDataAdapter.BusFindDataHolder> {
 
     FindYourBus allFindBusDetails;
-    ArrayList<BusFindModel> allFindBusDetailsData;
+    ArrayList<BusModel> allFindBusDetailsData;
 
     public BusFindDataAdapter(){
 
     }
 
-    public BusFindDataAdapter(FindYourBus allFindBusDetails, ArrayList<BusFindModel> allFindBusDetailsData) {
+    public BusFindDataAdapter(FindYourBus allFindBusDetails, ArrayList<BusModel> allFindBusDetailsData) {
         this.allFindBusDetails = allFindBusDetails;
         this.allFindBusDetailsData = allFindBusDetailsData;
     }
@@ -39,11 +40,16 @@ public class BusFindDataAdapter extends RecyclerView.Adapter<BusFindDataAdapter.
     public void onBindViewHolder(@NonNull BusFindDataHolder holder, int position) {
         holder.busName.setText(allFindBusDetailsData.get(position).getBusName());
         holder.busType.setText(allFindBusDetailsData.get(position).getBusType());
-        holder.busSource.setText(allFindBusDetailsData.get(position).getBusStopName());
-        holder.busReachTime.setText(allFindBusDetailsData.get(position).getBusReachTime());
-        holder.busExitTime.setText(allFindBusDetailsData.get(position).getBusExitTime());
-        holder.busWaitingTime.setText(allFindBusDetailsData.get(position).getBusWaitingTime());
-        holder.busDestination.setText(allFindBusDetailsData.get(position).getBusFinalDestination());
+        holder.busSource.setText(allFindBusDetailsData.get(position).getBusSource());
+        holder.busDestination.setText(allFindBusDetailsData.get(position).getBusDestination());
+        holder.busSourceTime.setText(allFindBusDetailsData.get(position).getBusSourceTime());
+        holder.busDestinationTime.setText(allFindBusDetailsData.get(position).getBusDestinationTime());
+
+//        holder.busSource.setText(allFindBusDetailsData.get(position).getBusStopName());
+//        holder.busReachTime.setText(allFindBusDetailsData.get(position).getBusReachTime());
+//        holder.busExitTime.setText(allFindBusDetailsData.get(position).getBusExitTime());
+//        holder.busWaitingTime.setText(allFindBusDetailsData.get(position).getBusWaitingTime());
+//        holder.busDestination.setText(allFindBusDetailsData.get(position).getBusFinalDestination());
 
     }
 
@@ -54,7 +60,7 @@ public class BusFindDataAdapter extends RecyclerView.Adapter<BusFindDataAdapter.
 
      class BusFindDataHolder extends RecyclerView.ViewHolder {
 
-         TextView busName,busType,busSource,busDestination,busReachTime,busExitTime,busWaitingTime;
+         TextView busName,busType,busSource,busDestination,busSourceTime,busDestinationTime;
 
         public BusFindDataHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,9 +69,9 @@ public class BusFindDataAdapter extends RecyclerView.Adapter<BusFindDataAdapter.
             busType= itemView.findViewById(R.id.tvBfdaBusType);
             busSource = itemView.findViewById(R.id.tvBfdaSource);
             busDestination = itemView.findViewById(R.id.tvBfdaDestination);
-            busReachTime = itemView.findViewById(R.id.tvBfdaBusReachTime);
-            busExitTime = itemView.findViewById(R.id.tvBfdaBusExitTime);
-            busWaitingTime = itemView.findViewById(R.id.tvBfdaBusWaitingTime);
+            busDestinationTime = itemView.findViewById(R.id.tvBfdaBusDestinationTime);
+            busSourceTime =  itemView.findViewById(R.id.tvBfdaBusSourceTime);
+
 
         }
     }
