@@ -39,7 +39,6 @@
                 android:paddingTop="@dimen/_10ssp"
                 >
 
-<!--                // ASP means add stops page-->
 
 
                 <LinearLayout

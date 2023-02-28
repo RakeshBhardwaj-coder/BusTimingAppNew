@@ -186,7 +186,7 @@ public class FindYourBus extends AppCompatActivity {
 //            query = firestore.collection("Surjpur").whereEqualTo("busDestination","Baikunthpur");
 
             // Get a reference to the Firestore collection
-             query = FirebaseFirestore.getInstance().collection("Surjpur").whereEqualTo("busDestination","Baikunthpur");
+             query = FirebaseFirestore.getInstance().collection("Surjpur").whereEqualTo("busDestination","Jashpur");
 //
 //
             query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -194,18 +194,32 @@ public class FindYourBus extends AppCompatActivity {
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                     if(!queryDocumentSnapshots.isEmpty()){
                         // Get the first document from the query result
-                        DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                        for (int i=0; i<25; i++){
+                            try {DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(i);
 
-                        // Get the value of the field2 field from the document
-                        String getBusNumberFromStop = documentSnapshot.getString("busNumber");
-                        if(getBusNumberFromStop!=null)
-                            GetBusDetails(getBusNumberFromStop);
-                        else {
-                        Toast.makeText(getApplicationContext(),"Sorry!!! data not Found",Toast.LENGTH_SHORT).show();
+                                if(documentSnapshot.exists()){
+                                    // Get the value of the field2 field from the document
+                                    String getBusNumberFromStop = documentSnapshot.getString("busNumber");
+                                    if(getBusNumberFromStop!=null)
+                                        GetBusDetails(getBusNumberFromStop);
+                                    else {
+                                        Toast.makeText(getApplicationContext(),"Sorry!!! data not Found",Toast.LENGTH_SHORT).show();
 
-                        }
+                                    }
 //                        Toast.makeText(getApplicationContext(),""+getBusNumberFromStop,Toast.LENGTH_SHORT).show();
-                    }
+                                }
+
+
+
+                        }catch (Exception e){
+
+                            }
+
+                        }}
+
+
+
+
                 }
             })
                     .addOnFailureListener(new OnFailureListener() {
@@ -257,7 +271,7 @@ public class FindYourBus extends AppCompatActivity {
     private void GetBusDetails(String getBusNumberFromStop) {
 
 //get Here
-        FirebaseFirestore.getInstance().collection("BusNumberDetails").document("1313")
+        FirebaseFirestore.getInstance().collection("BusNumberDetails").document(""+getBusNumberFromStop)
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
                     public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {

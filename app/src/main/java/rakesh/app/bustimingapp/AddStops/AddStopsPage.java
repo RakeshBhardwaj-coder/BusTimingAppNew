@@ -335,7 +335,7 @@ public class AddStopsPage extends AppCompatActivity {
     }
 
     private void AddBusStopDetail(String busDestinationStr,String busNumberStr,String busStopStr,int busStopIndex) {
-        DocumentReference documentSourceRef = FirebaseFirestore.getInstance().collection(busStopStr).document(busNumberStr+""+busStopIndex);
+        DocumentReference documentSourceRef = FirebaseFirestore.getInstance().collection(busStopStr).document(busNumberStr);
         BusModelForSD busModelForSource = new BusModelForSD(busDestinationStr,busNumberStr,busStopStr, busStopIndex);
         documentSourceRef.set(busModelForSource).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

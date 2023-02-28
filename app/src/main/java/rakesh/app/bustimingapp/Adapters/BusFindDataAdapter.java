@@ -1,8 +1,10 @@
 package rakesh.app.bustimingapp.Adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,14 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import rakesh.app.bustimingapp.FindYourBus.FindAllBusStopDetails;
 import rakesh.app.bustimingapp.FindYourBus.FindYourBus;
-import rakesh.app.bustimingapp.Models.BusFindModel;
 import rakesh.app.bustimingapp.Models.BusModel;
 import rakesh.app.bustimingapp.R;
 
 public class BusFindDataAdapter extends RecyclerView.Adapter<BusFindDataAdapter.BusFindDataHolder> {
 
     FindYourBus allFindBusDetails;
+
+
     ArrayList<BusModel> allFindBusDetailsData;
 
     public BusFindDataAdapter(){
@@ -51,6 +55,13 @@ public class BusFindDataAdapter extends RecyclerView.Adapter<BusFindDataAdapter.
 //        holder.busWaitingTime.setText(allFindBusDetailsData.get(position).getBusWaitingTime());
 //        holder.busDestination.setText(allFindBusDetailsData.get(position).getBusFinalDestination());
 
+        holder.moreInfoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                allFindBusDetails.startActivity(new Intent(allFindBusDetails, FindAllBusStopDetails.class));
+            }
+        });
+
     }
 
     @Override
@@ -61,7 +72,7 @@ public class BusFindDataAdapter extends RecyclerView.Adapter<BusFindDataAdapter.
      class BusFindDataHolder extends RecyclerView.ViewHolder {
 
          TextView busName,busType,busSource,busDestination,busSourceTime,busDestinationTime;
-
+Button moreInfoBtn;
         public BusFindDataHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -71,6 +82,8 @@ public class BusFindDataAdapter extends RecyclerView.Adapter<BusFindDataAdapter.
             busDestination = itemView.findViewById(R.id.tvBfdaDestination);
             busDestinationTime = itemView.findViewById(R.id.tvBfdaBusDestinationTime);
             busSourceTime =  itemView.findViewById(R.id.tvBfdaBusSourceTime);
+
+            moreInfoBtn = itemView.findViewById(R.id.bfdaBtnMoreInfo);
 
 
         }

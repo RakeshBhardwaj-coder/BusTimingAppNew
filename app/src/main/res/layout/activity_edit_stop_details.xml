@@ -60,6 +60,16 @@
             android:textAlignment="textStart"
             android:padding="10dp"
             />
+        <EditText
+            android:id="@+id/esdBusNextStopName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@color/white"
+            android:hint="Bus Next Stop Name"
+            android:textAlignment="textStart"
+            android:padding="10dp"
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

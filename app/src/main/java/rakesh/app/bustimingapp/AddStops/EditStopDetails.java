@@ -36,7 +36,7 @@ public class EditStopDetails extends AppCompatActivity {
     String busStopKey;
     String busNumberKey;
 
-    EditText editBusStopName,editBusWaitingTime;
+    EditText editBusStopName,editBusNextStopName,editBusWaitingTime;
     TextView editingBusStopIndex,editBusReachTime,editBusExitTime;
     ImageView setReachTime,setExitTime;
 
@@ -58,6 +58,7 @@ public class EditStopDetails extends AppCompatActivity {
         editBusReachTime = findViewById(R.id.esdBusReachTime);
         editBusStopName = findViewById(R.id.esdBusStopName);
         editBusWaitingTime = findViewById(R.id.esdBusWaitingTime);
+        editBusNextStopName = findViewById(R.id.esdBusNextStopName);
 
         editCancelBtn = findViewById(R.id.esdCancelBtn);
         editBtn = findViewById(R.id.esdEditBtn);
@@ -145,6 +146,7 @@ public class EditStopDetails extends AppCompatActivity {
                         if(error == null){
                             BusStopsModel stopData = value.toObject(BusStopsModel.class);
 
+                            editBusNextStopName.setText(stopData.getBusNextStopName());
                             editBusStopName.setText(stopData.getBusStopName());
                             editBusReachTime.setText(stopData.getBusReachTime());
                             editBusExitTime.setText(stopData.getBusExitTime());
@@ -155,14 +157,15 @@ public class EditStopDetails extends AppCompatActivity {
     }
     void UpdateStopData(){
 
-        String editBusStopNameStr,editBusReachTimeStr,editBusExitTimeStr,editBusWaitingTimeStr;
+        String editBusStopNameStr,editBusNextStopNameStr,editBusReachTimeStr,editBusExitTimeStr,editBusWaitingTimeStr;
         editBusStopNameStr = editBusStopName.getText().toString();
         editBusReachTimeStr = editBusReachTime.getText().toString();
         editBusExitTimeStr = editBusExitTime.getText().toString();
         editBusWaitingTimeStr = editBusWaitingTime.getText().toString();
+        editBusNextStopNameStr = editBusNextStopName.getText().toString();
 
         FirebaseFirestore.getInstance().collection("Stops").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection(busNumberKey).document(busStopKey)
-                .update("busStopName",editBusStopNameStr,"busReachTime",editBusReachTimeStr,"busExitTime",editBusExitTimeStr,"busWaitingTime",editBusWaitingTimeStr)
+                .update("busStopName",editBusStopNameStr,"busNextStopName",editBusNextStopNameStr,"busReachTime",editBusReachTimeStr,"busExitTime",editBusExitTimeStr,"busWaitingTime",editBusWaitingTimeStr)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
