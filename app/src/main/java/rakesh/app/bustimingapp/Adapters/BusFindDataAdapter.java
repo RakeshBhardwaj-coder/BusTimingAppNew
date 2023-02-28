@@ -55,12 +55,12 @@ public class BusFindDataAdapter extends RecyclerView.Adapter<BusFindDataAdapter.
 //        holder.busWaitingTime.setText(allFindBusDetailsData.get(position).getBusWaitingTime());
 //        holder.busDestination.setText(allFindBusDetailsData.get(position).getBusFinalDestination());
 
-        holder.moreInfoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                allFindBusDetails.startActivity(new Intent(allFindBusDetails, FindAllBusStopDetails.class));
-            }
-        });
+//        holder.moreInfoBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                allFindBusDetails.startActivity(new Intent(allFindBusDetails, FindAllBusStopDetails.class));
+//            }
+//        });
 
     }
 
@@ -83,7 +83,7 @@ Button moreInfoBtn;
             busDestinationTime = itemView.findViewById(R.id.tvBfdaBusDestinationTime);
             busSourceTime =  itemView.findViewById(R.id.tvBfdaBusSourceTime);
 
-            moreInfoBtn = itemView.findViewById(R.id.bfdaBtnMoreInfo);
+//            moreInfoBtn = itemView.findViewById(R.id.bfdaBtnMoreInfo);
 
 
         }

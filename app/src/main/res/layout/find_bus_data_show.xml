@@ -121,43 +121,43 @@
                 />
         </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            >-->
-<!--            <TextView-->
-<!--                android:id="@+id/tvBfdaBusWaitingTime"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:paddingRight="@dimen/_5ssp"-->
-<!--                android:text="10"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="@dimen/_15ssp"-->
-
-<!--                />-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="mins of waiting"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="@dimen/_15ssp"-->
-
-<!--                />-->
-
-<!--        </LinearLayout>-->
-
-        <Button
-            android:id="@+id/bfdaBtnMoreInfo"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="More Info"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/white"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/tvBfdaBusWaitingTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/_5ssp"
+                android:text="10"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
 
-            />
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mins of waiting"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
+
+                />
+
+        </LinearLayout>
+
+<!--        <Button-->
+<!--            android:id="@+id/bfdaBtnMoreInfo"-->
+<!--            android:layout_marginTop="@dimen/_10sdp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="More Info"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:backgroundTint="@color/white"-->
+
+<!--            />-->
 
     </LinearLayout>
 

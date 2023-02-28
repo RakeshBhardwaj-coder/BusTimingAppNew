@@ -186,7 +186,7 @@ public class FindYourBus extends AppCompatActivity {
 //            query = firestore.collection("Surjpur").whereEqualTo("busDestination","Baikunthpur");
 
             // Get a reference to the Firestore collection
-             query = FirebaseFirestore.getInstance().collection("Surjpur").whereEqualTo("busDestination","Jashpur");
+             query = FirebaseFirestore.getInstance().collection(""+findStoppageStr).whereEqualTo("busDestination",""+findDestinationStr);
 //
 //
             query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
